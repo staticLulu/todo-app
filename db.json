@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": "74e2",
+      "title": "First Post",
+      "content": "This is First [1st] Post made by us in CRUD app"
+    },
+    {
+      "id": "8416",
+      "title": "Second Post",
+      "content": "This is Second [2nd] Post made by us in CRUD app"
+    },
+    {
+      "id": "d195",
+      "title": "third post",
+      "content": "this is my third post"
+    },
+    {
+      "id": "75fd",
+      "title": "fourth post",
+      "content": "this is my fourth post"
+    },
+    {
+      "id": "dd38",
+      "title": "hellowrld",
+      "content": "helloworld"
+    },
+    {
+      "id": "3623",
+      "title": "hello world123",
+      "content": "yes i am helloworld"
+    }
+  ]
+}

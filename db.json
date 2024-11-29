@@ -1,0 +1,19 @@
+{
+  "posts": [
+    {
+      "title": "hello world",
+      "content": "helloworld made by idk",
+      "id": "76c4"
+    },
+    {
+      "id": "0334",
+      "title": "helloworld 1",
+      "content": "helloworld 1 made by nobody?"
+    },
+    {
+      "id": "522c",
+      "title": "helloworld 2",
+      "content": "helloworld 2 made by who?"
+    }
+  ]
+}

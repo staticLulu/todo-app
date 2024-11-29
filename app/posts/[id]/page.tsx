@@ -1,8 +1,7 @@
 'use client';
-
 import axios from "axios";
-import { useEffect, useCallback, useState, FormEvent } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useEffect, useCallback, useState, FormEvent, ReactNode } from "react";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Button, Input, Textarea } from "@nextui-org/react";
 
 interface Post {
@@ -12,10 +11,11 @@ interface Post {
 
 export default function PostAUser() {
   const { id } = useParams();
-  console.log(id);
+  const searchQuery = useSearchParams();
+  const mode = searchQuery.get('mode');
   const router = useRouter();
   const [post, setPost] = useState<Post | null>(null);
-  const [editing, setEditing] = useState<boolean>(false);
+  const [editing, setEditing] = useState<ReactNode>(mode === 'edit');
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
 
@@ -36,11 +36,20 @@ export default function PostAUser() {
     fetchPost();
   }, [fetchPost]);
 
+  useEffect(() => {
+    setEditing(mode === 'edit')
+  }, [mode])
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     await axios.put(`http://localhost:5000/posts/${id}`, {title, content});
     setEditing(false);
     fetchPost();
+  }
+
+  const handleDelete = async () => {
+    await axios.delete(`http://localhost:5000/posts/${id}`);
+    router.push('/posts')
   }
 
   return (
@@ -54,7 +63,6 @@ export default function PostAUser() {
             flex-col 
             justify-center 
             items-center 
-            bg-rose-200 
             p-5 
             shadow-sm 
             rounded-lg
@@ -81,12 +89,12 @@ export default function PostAUser() {
               <Button type="submit" color="success" className="text-white">Save</Button>
             </form>
           ) : (
-            <div className="max-w-screen-md bg-rose-200 p-5 shadow-sm rounded-lg">
+            <div className="max-w-screen-md border border-slate-400 p-5 shadow-sm rounded-lg">
               <h3 className="text-3xl font-semibold py-2">{post.title}</h3>
               <p className="text-lg">{post.content}</p>
             </div>
           )}
-            <div className="flex gap-2">
+            <div className="flex gap-2 my-5">
               <Button 
                 className="text-white" 
                 color="primary"
@@ -104,6 +112,7 @@ export default function PostAUser() {
               <Button 
                 className="text-white" 
                 color="danger"
+                onClick={handleDelete}
               >
                 Delete
               </Button>

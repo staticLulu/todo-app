@@ -15,6 +15,12 @@ const PostPage = () => {
     setPosts(response.data);
   };
 
+  const handleDelete = async (id: number) => {
+    await axios.delete(`http://localhost:5000/posts/${id}`);
+    const filterData = posts.filter((post: PostsProps) => post.id !== id);
+    setPosts(filterData);
+  }
+
   useEffect(() => {
     fetchRecords();
   }, []);
@@ -47,7 +53,7 @@ const PostPage = () => {
             color="danger" 
             size="sm" 
             variant="bordered"
-            onClick={() => router.push(`/posts/${row.id}?mode=delete`)}
+            onClick={() => handleDelete(row.id)}
           >
             Delete
           </Button>
@@ -57,7 +63,7 @@ const PostPage = () => {
   ];
 
   return (
-    <div className="max-w-screen-xl mx-auto bg-rose-200 p-5">
+    <div className="max-w-screen-xl mx-auto p-5">
       <div className="py-5 flex justify-between">
         <div className="flex items-center gap-2.5">
           <h1 className="text-3xl font-semibold">Blog Posts</h1>

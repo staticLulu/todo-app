@@ -25,14 +25,7 @@ const CreatePage = () => {
         >
           👈 back
         </Button>
-        <h1 
-          className='
-            text-3xl 
-            text-center 
-            font-semibold 
-            text-green-600
-          '
-        >
+        <h1 className='text-3xl text-center font-semibold text-green-600'>
           Create New Post
         </h1>
       </div>

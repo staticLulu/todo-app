@@ -1,44 +1,19 @@
 {
   "posts": [
     {
-      "title": "helloworld 1st",
-      "content": "helloword made by nobody else",
-      "id": "74e2"
-    },
-    {
-      "id": "8416",
-      "title": "Second Post",
-      "content": "This is Second [2nd] Post made by us in CRUD app"
-    },
-    {
-      "id": "d195",
-      "title": "third post",
-      "content": "this is my third post"
-    },
-    {
-      "id": "75fd",
-      "title": "fourth post",
-      "content": "this is my fourth post"
-    },
-    {
-      "id": "dd38",
-      "title": "hellowrld",
-      "content": "helloworld"
-    },
-    {
-      "id": "3623",
-      "title": "hello world123",
-      "content": "yes i am helloworld"
-    },
-    {
-      "id": "76c4",
       "title": "hello world",
-      "content": "helloworld made by makaradang123"
+      "content": "helloworld made by idk",
+      "id": "76c4"
     },
     {
-      "id": "ba14",
-      "title": "hello who am i?",
-      "content": "i am nobody!!"
+      "id": "0334",
+      "title": "helloworld 1",
+      "content": "helloworld 1 made by nobody?"
+    },
+    {
+      "id": "522c",
+      "title": "helloworld 2",
+      "content": "helloworld 2 made by who?"
     }
   ]
 }

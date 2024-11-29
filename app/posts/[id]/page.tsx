@@ -1,8 +1,8 @@
 'use client';
 
 import axios from "axios";
-import { useEffect, useCallback, useState } from "react";
-import { useParams } from "next/navigation";
+import { useEffect, useCallback, useState, FormEvent } from "react";
+import { useParams, useRouter } from "next/navigation";
 import { Button, Input, Textarea } from "@nextui-org/react";
 
 interface Post {
@@ -12,6 +12,8 @@ interface Post {
 
 export default function PostAUser() {
   const { id } = useParams();
+  console.log(id);
+  const router = useRouter();
   const [post, setPost] = useState<Post | null>(null);
   const [editing, setEditing] = useState<boolean>(false);
   const [title, setTitle] = useState<string>('');
@@ -34,13 +36,38 @@ export default function PostAUser() {
     fetchPost();
   }, [fetchPost]);
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    await axios.put(`http://localhost:5000/posts/${id}`, {title, content});
+    setEditing(false);
+    fetchPost();
+  }
+
   return (
     <div className="h-screen w-screen">
       {post ? (
-        <div className="max-w-screen-md mx-auto flex flex-col justify-center items-center bg-rose-200 p-5 shadow-sm rounded-lg">
+        <div 
+          className="
+            max-w-screen-md 
+            mx-auto 
+            flex 
+            flex-col 
+            justify-center 
+            items-center 
+            bg-rose-200 
+            p-5 
+            shadow-sm 
+            rounded-lg
+          "
+        >
           {editing ? (
-            <form>
-              <Input type="text" placeholder="Title" value={title} />
+            <form onSubmit={handleSubmit} className="grid gap-2 p-5">
+              <Input 
+                type="text" 
+                placeholder="Title" 
+                value={title} 
+                onChange={(e) => setTitle(e.target.value)}
+              />
               <Textarea
                 label="Content"
                 variant="bordered"
@@ -48,7 +75,10 @@ export default function PostAUser() {
                 placeholder="Enter your content"
                 disableAnimation
                 disableAutosize
+                onChange={(e) => setContent(e.target.value)}
               />
+
+              <Button type="submit" color="success" className="text-white">Save</Button>
             </form>
           ) : (
             <div className="max-w-screen-md bg-rose-200 p-5 shadow-sm rounded-lg">
@@ -57,7 +87,13 @@ export default function PostAUser() {
             </div>
           )}
             <div className="flex gap-2">
-              <Button className="text-white" color="primary">Home</Button>
+              <Button 
+                className="text-white" 
+                color="primary"
+                onClick={() => router.push('/posts')}
+              >
+                Home
+              </Button>
               <Button 
                 className="text-white" 
                 onClick={() => setEditing(!editing)}
@@ -65,7 +101,12 @@ export default function PostAUser() {
               >
                 Edit
               </Button>
-              <Button className="text-white" color="danger">Delete</Button>
+              <Button 
+                className="text-white" 
+                color="danger"
+              >
+                Delete
+              </Button>
             </div>
         </div>
       ) : (

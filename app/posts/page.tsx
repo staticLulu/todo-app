@@ -32,13 +32,14 @@ const PostPage = () => {
             color="primary" 
             variant="light" 
             size="sm"
-            onClick={() => router.push(`/posts/${row.id}`)}
+            onClick={() => router.push(`/posts/${row.id}?mode=read`)}
           >
             Read
           </Button>
           <Button 
             color="primary" 
             size="sm"
+            onClick={() => router.push(`/posts/${row.id}?mode=edit`)}
           >
             Edit
           </Button>
@@ -46,6 +47,7 @@ const PostPage = () => {
             color="danger" 
             size="sm" 
             variant="bordered"
+            onClick={() => router.push(`/posts/${row.id}?mode=delete`)}
           >
             Delete
           </Button>
@@ -57,7 +59,16 @@ const PostPage = () => {
   return (
     <div className="max-w-screen-xl mx-auto bg-rose-200 p-5">
       <div className="py-5 flex justify-between">
-        <h1 className="text-3xl font-semibold">Blog Posts</h1>
+        <div className="flex items-center gap-2.5">
+          <h1 className="text-3xl font-semibold">Blog Posts</h1>
+          <Button 
+            variant="light" 
+            size="lg" 
+            onClick={() => router.push('/')}
+          >
+            👈 back
+          </Button>
+        </div>
         <Button
           onClick={() => router.push("/posts/create")}
           variant="shadow"

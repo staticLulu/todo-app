@@ -17,7 +17,25 @@ const CreatePage = () => {
 
   return (
     <div className='max-w-screen-sm mx-auto pt-10'>
-      <h1 className='text-3xl text-center font-semibold text-green-600'>Create New Post</h1>
+      <div className='flex items-center gap-24'>
+        <Button 
+          variant="light" 
+          size="lg" 
+          onClick={() => router.push('/posts')}
+        >
+          👈 back
+        </Button>
+        <h1 
+          className='
+            text-3xl 
+            text-center 
+            font-semibold 
+            text-green-600
+          '
+        >
+          Create New Post
+        </h1>
+      </div>
       <form 
         onSubmit={handleSubmit}
         className='flex flex-col space-y-4 mt-6 border p-6'

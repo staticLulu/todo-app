@@ -33,7 +33,8 @@ Install my-project with yarn or npm
   npm run dev
 ```
 
-### **Run server json for db.json **
+#### **Run server json for db.json**
+
 endpoint: http://localhost:5000/posts
 ```bash
   yarn server

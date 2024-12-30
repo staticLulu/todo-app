@@ -2,7 +2,7 @@
   "posts": [
     {
       "title": "hello world",
-      "content": "helloworld made by idk",
+      "content": "helloworld here is the time you need to what make you happier",
       "id": "76c4"
     },
     {
@@ -14,6 +14,16 @@
       "id": "522c",
       "title": "helloworld 2",
       "content": "helloworld 2 made by who?"
+    },
+    {
+      "id": "2855",
+      "title": "hello new item",
+      "content": "hello add a new item!!"
+    },
+    {
+      "id": "1725",
+      "title": "sok koko is here?",
+      "content": "no i am nobody else, i am me."
     }
   ]
 }
